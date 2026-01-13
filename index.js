@@ -24,8 +24,20 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(urlencoded({extended:true}));
 app.use(cookieParser());
+const corsOptions = {
+    origin: "https://jobkart.vercel.app", // Single string works better sometimes
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
+
+// Explicitly handle OPTIONS requests
+app.options('*', cors(corsOptions));
+
 
 // api's route
 app.use("/api/v1/user", userRoute);
