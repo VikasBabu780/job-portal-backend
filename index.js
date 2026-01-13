@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:"hhttps://jobkart.vercel.app",
+    origin:"https://jobkart.vercel.app",
     credentials:true
 }
 app.use(cors(corsOptions));
